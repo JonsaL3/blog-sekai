@@ -1,0 +1,168 @@
+/* Este css será común a todas las webs, corresponde con los estilos del header y el footer
+que son comunes a todas las webs */
+
+@font-face { font-family: 'Poppins'; src: url('../fuentes/Poppins-ExtraLight.ttf'); }
+
+/* HEADER --------------------------------------*/
+*{
+    display: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /*border: 1px solid black;*/
+}
+
+#logo{
+    width: 200px;
+    margin-left: 40px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    justify-content: space-between;
+    box-shadow: 5px 0px 20px #4c4c4c;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #f6f6f8;
+    font-size: 0.7em
+}
+
+.botones{
+    margin-right: 40px;
+    padding: 12px;
+    border-radius: 50px;
+    text-decoration: none;
+    background-color: #727272;
+    color: white;
+    transition: 0.2s;
+}
+
+.botones:hover{
+    background-color: #4c4c4c;
+    transition: 0.2s;
+}
+
+#elementosNavbar{
+    min-width: 80px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 200px;
+}
+
+.cosasnavbaretc{
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: #4c4c4c;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.cosasnavbaretc:hover{
+    color: #727272;
+}
+
+/* Layout principal, para que tenga bordes blancos */
+
+main{
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+    margin: auto;
+    box-shadow: 5px 0px 20px #4c4c4c50;
+    margin-top: -20px;
+}
+
+
+/* Footer --------------------------------------*/
+
+footer{
+    display: flex;
+    box-shadow: 5px 0px 20px #4c4c4c;
+    padding: 5px;
+    background-color: #f6f6f8;
+    flex-direction: column;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#patrocinadores{
+    background-color: #f6f6f8;
+    width: 80%;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#indytek-logo{
+    width: 200px;
+}
+footer div h3{
+    padding-top: 14px;
+}
+
+#partedearribadelfooter{
+    width: 100%;
+    display: flex;
+}
+
+.footera{
+    min-height: 300px;
+    width: 50%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.footera ul li{
+    list-style-type: none;
+    padding: 10px;
+    text-align: center;
+    color: #4c4c4c;
+}
+
+::selection {
+    color: white;
+    background: #4c4c4c9d;
+}
+
+::-moz-selection {
+    color: white;;
+    background: #4c4c4c9d;
+  }
+
+@media (max-width: 1540px){
+    
+    main{
+        width: 85%;
+    }
+
+}
+
+@media(max-width: 1150px){
+
+    #logo{
+        display: none;
+    }
+
+    nav{
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 1280px){
+    
+    main{
+        width: 100%;
+    }
+}
+
+h1{
+    overflow: hidden;
+}

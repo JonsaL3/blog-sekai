@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/comun.css">
+    <link rel="stylesheet" href="./css/panel.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./imagenes/favicon.png">
+    <title>Sekai - Inicio</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img id="logo" src="./imagenes/logo.png" alt="Logo">
+            <div id="elementosNavbar">
+                <a class="cosasnavbaretc" href="./blog">Ir al Blog</a>
+                <a class="cosasnavbaretc" href="./panel">Ir al Panel</a>
+                <a class="cosasnavbaretc" href="./destroy">Cerrar Sesión</a>
+            </div>
+            <a class="botones" href="./login"><b>&nbsp;&nbsp;Iniciar Sesión&nbsp;&nbsp;</b></a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="subcontenedor">
+            <div id="imagenprincipal">
+                <h1>Panel de: $username$</h1>
+            </div>
+            <br>
+            <h1>Agregue, edite y modifique lo que desee...</h1>
+            <hr>
+            <div style="margin-bottom: 30px;"></div>
+        </div>
+        <div class="forms">
+            <form action="panel" method="post">
+                <table>
+                    <th colspan="2">
+                        <h1>Cambie su contraseña</h1>
+                    </th>
+                    <tr>
+                        <td>Contraseña actual: </td>
+                        <td><input type="password" name="current"></td>
+                    </tr>
+                    <tr>
+                        <td>Nueva Contraseña: </td>
+                        <td><input type="password" name="new1"></td>
+                    </tr>
+                    <tr>
+                        <td>Repetir contraseña</td>
+                        <td><input type="password" name="new2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centrar-texto">$password_changed$</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;"><input type="submit" class="botones botones-enviar"
+                                value="Cambiar contraseña"></td>
+                    </tr>
+                </table>
+            </form>
+            $create_users$
+        </div>
+        
+        <br>
+            <h1>Gestione todo en su blog de forma cómoda...</h1>
+            <hr>
+
+        <div class="forms">
+            <table class="formulario-entrada">
+                <th colspan="3">
+                    <h3>Sus entradas</h3>
+                </th>
+                $entrys_user$
+            </table>
+            <br><br>
+            $users_admin_menu$
+            <br><br>
+        </div>
+        <br>
+        <br>
+        <a id="agregar_entrada" class="botones botones-enviar" href="./editor">Crear nueva entrada</a>
+        <br>
+        <br>
+    </main>
+
+    <footer>
+        <div id="partedearribadelfooter">
+            <div class="footera">
+                <ul>
+                    <li>
+                        <h4>Información básica</h4>
+                    </li>
+                    <hr>
+                    <br>
+                    <li>Práctica del Blog</li>
+                    <li>De la asignatura de PSP</li>
+                    <li>Servlets</li>
+                </ul>
+            </div>
+            <div class="footera">
+                <ul>
+                    <li>
+                        <h4>Información del Blog</h4>
+                    </li>
+                    <hr>
+                    <br>
+                    <li>Sekai Blog</li>
+                    <li>Tech Blog</li>
+                    <li>Comenta</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div id="patrocinadores">
+            <h3>Powered by Gonzalo Racero Galán</h3>
+        </div>
+    </footer>
+
+</body>
+
+</html>
