@@ -23,6 +23,9 @@ public class Editor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
+		if (!db.databaseExists())
+			resp.sendRedirect(req.getContextPath() + "/installer");
+		
 		PrintWriter out;
         ST html;
         HttpSession session;
@@ -72,35 +75,38 @@ public class Editor extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		HttpSession session;
-		String title, content;
-		int fecha;
-		
-		session = req.getSession(false);
-		resp.setCharacterEncoding("UTF-8");
-		String usuario = (String) session.getAttribute("usuario_de_la_sesion");
-    	Usuario u = db.findUsuarioById(usuario).get();
-
-		if (session != null)
+		if (!db.databaseExists())
+			resp.sendRedirect(req.getContextPath() + "/installer");
+		else
 		{
-			title = req.getParameter("title");
-			content = req.getParameter("content");
-			fecha = LocalDate.now().getYear();
-			
-			
-			
-			if (entryId != null)
+			HttpSession session;
+			String title, content;
+			int fecha;
+		
+			session = req.getSession(false);
+			resp.setCharacterEncoding("UTF-8");
+			String usuario = (String) session.getAttribute("usuario_de_la_sesion");
+			Usuario u = db.findUsuarioById(usuario).get();
+
+			if (session != null)
 			{
-				title = StringHTMLizer.convert(title);
-				content = StringHTMLizer.convert(content);
-				
-				if (db.updateEntry(new Entrada(Integer.parseInt(entryId), title, content, fecha)))
-					resp.sendRedirect(req.getContextPath() + "/panel");
-				entryId = null;
-			}
-			else if (db.insertEntry(u, new Entrada(null, title, content, fecha)))
-				resp.sendRedirect(req.getContextPath() + "/panel");
+				title = req.getParameter("title");
+				content = req.getParameter("content");
+				fecha = LocalDate.now().getYear();
 			
+				if (entryId != null && u.getEntradas().stream().filter(e -> e.getId().equals(Integer.parseInt(entryId))).findFirst().isPresent()) // si la estoy actualizando tengo que tener cuidado de no estar editando la de otro tio
+				{
+					title = StringHTMLizer.convert(title);
+					content = StringHTMLizer.convert(content);
+				
+					if (db.updateEntry(new Entrada(Integer.parseInt(entryId), title, content, fecha)))
+						resp.sendRedirect(req.getContextPath() + "/panel");
+					entryId = null;
+				}		
+				else if (db.insertEntry(u, new Entrada(null, title, content, fecha)))
+					resp.sendRedirect(req.getContextPath() + "/panel");
+			
+			}
 		}
 	}
 }

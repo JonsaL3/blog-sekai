@@ -37,7 +37,11 @@ main hr{
 
 #entradas {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .entrada
@@ -47,6 +51,8 @@ main hr{
     border-radius: 5mm;
     box-shadow: 0px 0px 15px #4c4c4c50;
     padding: 20px;
+    width: 40%;
+
 }
 
 .entrada hr {
@@ -65,7 +71,3 @@ main hr{
     display: flex;
     justify-content: space-between;
 }
-/*
-* {
-    border: 1px solid black;
-}*/

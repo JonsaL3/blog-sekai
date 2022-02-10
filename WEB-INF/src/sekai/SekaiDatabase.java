@@ -1,5 +1,6 @@
 package sekai;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -422,6 +423,14 @@ public class SekaiDatabase {
 		
 	}
 	
+	public boolean databaseExists()
+	{
+		// si hubiese usado otra ubicacion para la base de datos en el constructor
+		// pondría algo del estilo: C: \ users\pepe\superSecuredFolder\sekaiDatabase.db
+		File baseDeDatos = new File("sekai_database.db");
+		return baseDeDatos.exists();
+	}
+	
 	// En estas otras operaciones para administrar la base de datos
 	
 	public boolean closeDatabase() 
@@ -454,7 +463,12 @@ public class SekaiDatabase {
 		{
 			try
 			{
-				url = "jdbc:sqlite:" + BBDDNAME; // TODO RUTA ABSOLUTA
+				// Sé que lo óptimo es utilizar la ruta absoluta de algún lugar distinto al proyecto
+				//en lugar de poner aqui directamente
+				// la base de datos, puesto que así es muy vulnerable.
+				// Pero como lo vas a corregir en tu ordenador y no en el mio, creo que lo mas 
+				// como es dejar asi la bbdd
+				url = "jdbc:sqlite:" + BBDDNAME;
 				Class.forName("org.sqlite.JDBC").getDeclaredConstructor().newInstance();
 		        conn = DriverManager.getConnection(url);
 			}
